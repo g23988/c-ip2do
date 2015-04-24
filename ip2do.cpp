@@ -45,13 +45,9 @@ int main(int argc, char **argv){
 	fp.open(argv[3],ios::out);
 	int found = -1;
 	while(fin.getline(line,sizeof(line),'\n')){
-<<<<<<< HEAD
 		//char a[1024];
 		string buffer = line;	
-=======
-
 		buffer = line;
->>>>>>> 228c41f16941680510a23f5aecd691e102a865ef
 		map<string,string>::iterator iter;	
 		for(iter= iptodo.begin();iter!=iptodo.end();iter++){
 			string ip = iter->first;
