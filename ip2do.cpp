@@ -31,6 +31,7 @@ void readDir(){
 		map_insert(&iptodo,ip,domain);	
 		
 	}
+	fin.close();
 }
 int main(int argc, char **argv){
 	//read argv
@@ -48,8 +49,8 @@ int main(int argc, char **argv){
 	fin.open(sourceFile,ios::in);
 	fp.open(disFile,ios::out);
 	while(fin.getline(line,sizeof(line),'\n')){
-		char a[1024];
-		string buffer = strcpy(a,line);	
+		//char a[1024];
+		string buffer = line;	
 		map<string,string>::iterator iter;	
 		for(iter= iptodo.begin();iter!=iptodo.end();iter++){
 			string ip = iter->first;
@@ -62,6 +63,7 @@ int main(int argc, char **argv){
 		}
 		fp<<buffer<<endl;	
 	}
+	fin.close();
 	fp.close();
 	return 0;	
 }
