@@ -45,7 +45,6 @@ int main(int argc, char **argv){
 	fp.open(argv[3],ios::out);
 	int found = -1;
 	while(fin.getline(line,sizeof(line),'\n')){
-		//char a[1024];
 		string buffer = line;	
 		buffer = line;
 		map<string,string>::iterator iter;	
@@ -59,7 +58,6 @@ int main(int argc, char **argv){
 		}
 		fp<<buffer<<endl;	
 	}
-	fin.close();
 	fp.close();
 	fin.close();
 	return 0;	
