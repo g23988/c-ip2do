@@ -5,7 +5,7 @@
 #include<map>
 #include<algorithm>
 using namespace std;
-#define SIZE 1024
+#define SIZE 1024000
 char line[SIZE];
 char *sourceFile;
 char *dirFile;
@@ -34,6 +34,8 @@ void readDir(){
 	}
 	fin.close();
 }
+
+
 int main(int argc, char **argv){
 	//read argv
 	if(argc == 1 || argc == 2 || argc == 3 || argc == 4){
@@ -54,7 +56,8 @@ int main(int argc, char **argv){
 	fstream fp;
 	fin.open(sourceFile,ios::in);
 	fp.open(disFile,ios::out);
-	while(fin.getline(line,sizeof(line),'\n')){
+	//while(fin.getline(line,sizeof(line),'\n')){
+	while(fin.getline(line,102400)){
 		//char a[1024];
 		string buffer = line;	
 		map<string,string>::iterator iter;	
@@ -65,13 +68,19 @@ int main(int argc, char **argv){
 			if(Trando2ip=="1"){
 				found = buffer.find(ip);
 				if(found != -1){
-					buffer.replace(found,ip.size(),domain);
+					do{
+						buffer.replace(found,ip.size(),domain);
+						found = buffer.find(ip);
+					}while(found != -1);
 				}
 			}
 			else{
 				found = buffer.find(domain);
 				if(found != -1){
-					buffer.replace(found,domain.size(),ip);
+					do{
+						buffer.replace(found,domain.size(),ip);
+						found = buffer.find(domain);
+					}while(found != -1);
 				}
 			}
 		}
