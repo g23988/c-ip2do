@@ -1,6 +1,7 @@
 #include<iostream>
 #include<fstream>
 #include<cstring>
+#include<ctype.h>
 #include<string>
 #include<map>
 #include<algorithm>
@@ -10,6 +11,7 @@ char line[SIZE];
 char *sourceFile;
 char *dirFile;
 char *disFile;
+
 string Trando2ip;
 //map<string,string> *IP2DO;
 map<string,string> iptodo;
@@ -69,8 +71,15 @@ int main(int argc, char **argv){
 				found = buffer.find(ip);
 				if(found != -1){
 					do{
-						buffer.replace(found,ip.size(),domain);
-						found = buffer.find(ip);
+						int a  = atoi((buffer.substr(found+ip.size(),1)).c_str());
+						if(a!=0){
+							break;
+						}
+						else{
+							buffer.replace(found,ip.size(),domain);
+							found = buffer.find(ip);
+						}
+						
 					}while(found != -1);
 				}
 			}
