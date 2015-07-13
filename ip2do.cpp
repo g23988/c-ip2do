@@ -59,7 +59,7 @@ int main(int argc, char **argv){
 	fin.open(sourceFile,ios::in);
 	fp.open(disFile,ios::out);
 	//while(fin.getline(line,sizeof(line),'\n')){
-	while(fin.getline(line,102400)){
+	while(fin.getline(line,10240000)){
 		//char a[1024];
 		string buffer = line;	
 		map<string,string>::iterator iter;	
